@@ -75,7 +75,7 @@
 						## Why learn it? <br/>
 						> I suppose I should learn Lisp, but it seems so foreign.
 						>
-						> -- <cite>Paul Graham, 1983</cite>
+						> -- <cite>Paul Graham (1983)</cite>
 					</section>
 				</section>
 				
@@ -163,7 +163,7 @@
 						<img style="border: none;" src="struct.png" alt="Clojure Expression">
 					</section>
 						
-					<section id="fragments">
+					<section>
 							<pre class="fragment"><code data-trim contenteditable>
 (+ 1 1) ;=> 2 
 					</code></pre>
@@ -180,14 +180,14 @@
 
 				<section>
 					<section data-markdown>
-						## Persistent Data Structures
+						### Persistent Data Structures
 						* Immutable
 						* Changing a list returns a new list
 						* No "copy-on-write". Internally re-use old list.
 					</section>
 
 					<section data-markdown>
-						## Persistent Data
+						### Persistent Data
 						* Thread-safe. No synchronisation issues.
 						* No concept of "state" makes code less bug-prone.
 						* Not as expensive, considering current memory & CPU capacities.
@@ -233,7 +233,7 @@
 				</section>
 
 				<section data-markdown>
-					## ClojureScript
+					### ClojureScript
 					* Clojure compiler that emits JavaScript.
 					* Uses the Google Closure compiler for compact, high-performance JS.
 					* Brings Clojure features to the browser.
@@ -251,11 +251,11 @@
 				</section>
 
 				<section data-markdown>
-					## Great fit for Java devs...
+					### Great fit for Java devs...
 					* Interoperable with Java. Clojure+Java usable in the same codebase.
 					* JVM understanding
 					* Leiningen uses Maven
-					* Java library ecosystem. Example of Java usage
+					* Java library ecosystem
 					* Webapps deployable on Java app servers
 				</section>
 
@@ -266,13 +266,97 @@
 				</section>
 
 				<section data-markdown>
-					## Relevance to Intuit
+					### Relevance to Intuit
 					* Productivity gains help in rapid iteration
 					* 'Service-oriented' is a state of mind
 					* Higher quality code -> fewer bugs
 					* Less framework-bloat, more maintainable codebases
 					* Macros allow customising the language for your domain
 				</section>
+
+				<section data-markdown>
+					## _Talk is cheap. Show me the code._
+					-- _Linus Torvalds_ 
+				</section>
+
+				<section data-markdown>
+					### Jackson Pollock
+					* January 28, 1912 – August 11, 1956
+					* Abstract expressionist painter
+					* Famous for his “drip-style” paintings
+				</section>
+
+				<section>
+					<img style="border: none;" src="no8.jpg" alt="Number 8">
+				</section>
+
+				<section data-markdown>
+					### Demo
+					Code & content based on [this article](http://tombooth.co.uk/painting-in-clojure/)
+				</section>
+
+				<section data-markdown>
+					### Steps
+					* Define our space+canvas
+					* Simulate flinging paint onto canvas
+					* Simulate splattering of paint
+					* Determine splatter pattern formed
+					* Render pattern on canvas
+				</section>
+
+				<section>
+					<section>
+						<img style="border: none;" src="space.png" alt="Define space">
+					</section>
+					<section>
+						</code></pre>
+							<pre><code data-trim contenteditable>
+(def space [8   ;; width
+            5   ;; height
+            6]) ;; depth
+
+(def gravity [0 -9.8 0])
+
+(def canvas-normal [0 1 0])
+					</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img style="border: none;" src="startpt.png" alt="Starting point">
+					</section>
+					<section>
+						<pre><code data-trim contenteditable>
+(defn starting-point []
+  (map rand space))
+					</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img style="border: none;" src="splatter.png" alt="Splatter">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img style="border: none;" src="paths.png" alt="Paths">
+					</section>
+
+					<section>
+						<img style="border: none;" src="paths2.png" alt="Paths-II">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img style="border: none;" src="motion.png" alt="Motion">
+					</section>
+				</section>
+
+
 			</div>
 
 		</div>
