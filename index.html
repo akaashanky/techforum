@@ -57,6 +57,21 @@
 					</p>
 				</section>
 
+				<section>
+					<h3>Jackson Pollock</h3>
+					<img style="border: none;" src="pollock.jpg" alt="Number 8">
+				</section>
+
+				<section>
+					<img style="border: none;" src="no8.jpg" alt="Number 8">
+					<br/>
+					<h5>Number 8</h5>
+				</section>
+
+				<section data-markdown>
+					Code & concept based on [Painting in Clojure](http://tombooth.co.uk/painting-in-clojure/) by Tom Booth
+				</section>
+
 				<section data-markdown>
 					<script type="text/template">
 						### So, what is Clojure?
@@ -164,9 +179,9 @@
 					</section>
 						
 					<section>
-							<pre class="fragment"><code data-trim contenteditable>
+						<pre class="fragment"><code data-trim contenteditable>
 (+ 1 1) ;=> 2 
-					</code></pre>
+						</code></pre>
 							<pre class="fragment"><code data-trim contenteditable>
 (defn greet
 	“Returns a friendly greeting”
@@ -182,54 +197,18 @@
 					<section data-markdown>
 						### Persistent Data Structures
 						* Immutable
-						* Changing a list returns a new list
+						* Changing a list returns a new list.
 						* No "copy-on-write". Internally re-use old list.
 					</section>
 
 					<section data-markdown>
 						### Persistent Data
 						* Thread-safe. No synchronisation issues.
+						* Allows lazy fetching.
 						* No concept of "state" makes code less bug-prone.
 						* Not as expensive, considering current memory & CPU capacities.
 					</section>
 
-					<section>
-						<table class="reveal" style="font-size: 24px;">
-							<thead>
-								<tr>
-									<th>Characteristic</th>
-									<th>Transient</th>
-									<th>Persistent</th>
-								</tr>
-								<tr>
-									<td>Sharing</td>
-									<td>Difficult</td>
-									<td>Trivial</td>
-								</tr>
-								<tr>
-									<td>Caching</td>
-									<td>Difficult</td>
-									<td>Easy</td>
-								</tr>
-								<tr>
-									<td>Concurrent Access</td>
-									<td>Difficult</td>
-									<td>Trivial</td>
-								</tr>
-								<tr>
-									<td>Access Pattern</td>
-									<td>Eager</td>
-									<td>Eager or Lazy</td>
-								</tr>
-								<tr>
-									<td>Examples</td>
-									<td>Java, .NET collections, relational DBs, etc.</td>
-									<td>Clojure, Scala, F# collections</td>
-								</tr>
-							</thead>
-							<tbody></tbody>
-						</table>
-					</section>
 				</section>
 
 				<section data-markdown>
@@ -251,12 +230,12 @@
 				</section>
 
 				<section data-markdown>
-					### Great fit for Java devs...
+					### Great fit for Java devs
 					* Interoperable with Java. Clojure+Java usable in the same codebase.
 					* JVM understanding
-					* Leiningen uses Maven
+					* Leiningen uses Maven semantics.
 					* Java library ecosystem
-					* Webapps deployable on Java app servers
+					* Webapps deployable on Java app servers.
 				</section>
 
 				<section>
@@ -279,21 +258,7 @@
 					-- _Linus Torvalds_ 
 				</section>
 
-				<section data-markdown>
-					### Jackson Pollock
-					* January 28, 1912 – August 11, 1956
-					* Abstract expressionist painter
-					* Famous for his “drip-style” paintings
-				</section>
-
-				<section>
-					<img style="border: none;" src="no8.jpg" alt="Number 8">
-				</section>
-
-				<section data-markdown>
-					### Demo
-					Code & content based on [this article](http://tombooth.co.uk/painting-in-clojure/)
-				</section>
+				
 
 				<section data-markdown>
 					### Steps
@@ -429,7 +394,8 @@
         	(random-path (vector-add (vector-add position step-vector)
 							(random-vector-between (- 0 bounds) bounds))
                                step-vector bounds))))
-
+						</code></pre>
+						<pre><code data-trim contenteditable>
 (defn anchor-points [position min-distance max-distance min-steps max-steps variation]
   (let [direction        (random-unit-vector)
         distance         (random-between min-distance max-distance)
@@ -475,14 +441,63 @@
     points))
 						</code></pre>
 					</section>
+
+					<section>
+						<img style="border: none;" src="motion.png" alt="Motion">
+					</section>
+					
+					<section>
+						<pre><code data-trim contenteditable>
+(defn path-masses [path initial-mass]
+  (let [number-of-points (count path)
+        step (- 0 (/ initial-mass number-of-points))]
+    (take number-of-points (range initial-mass 0 step))))
+						</code></pre>
+					</section>
 				</section>
 
 				<section>
 					<section>
-						<img style="border: none;" src="motion.png" alt="Motion">
+						<h3>Render pattern on canvas</h3>
+					</section>
+					
+					<section>
+						<pre><code data-trim contenteditable>
+(defn fling-and-render [& any]
+  (q/with-sketch (q/get-sketch-by-id "pollock")
+    (let [{:keys [colour canvas-path splatter]} (fling-paint)]
+      (q/stroke (apply q/color colour))
+      (draw-path canvas-path)
+      (doall (map draw-splats splatter)))))
+
+(.addEventListener (.querySelector js/document "#add")
+                   "click"
+                   fling-and-render)
+						</code></pre>
 					</section>
 				</section>
 
+				<section>
+					<h3>Links</h3>
+					<ul>
+						<li>Slides: http://akaashanky.github.io/techforum/</li>
+						<li>http://clojure.org/</li>
+						<li>http://tombooth.co.uk/painting-in-clojure/</li>
+						<li>https://github.com/tombooth/painting-in-clojure/</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Please do rate this talk</h3>
+					<br>
+					<ul>
+						<li>Go to <a href="http://bit.ly/tf5idc">http://bit.ly/tf5idc</a></li>
+						<li>Sign In using your corp credentials</li>
+						<li>Click on the session "Creating Art with Clojure"</li>
+						<li>On the right side click on "Rate this session" and rate the session</li>
+						<li>Thank you!</li>
+					</ul>
+				</section>
 
 			</div>
 
