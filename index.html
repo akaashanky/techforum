@@ -55,21 +55,36 @@
 					<p>
 						Akaash Patnaik
 					</p>
+
+					<aside class="notes">
+        				Survey questions: Heard about clojure? Used clojure?
+        				Talk will have 2 parts: "What/why Clojure" & "Code walkthrough"
+    				</aside>
 				</section>
 
 				<section>
 					<h3>Jackson Pollock</h3>
 					<img style="border: none;" src="pollock.jpg" alt="Number 8">
+					<aside class="notes">
+        				Abstract expressionist artist. Lived during 2nd half of 20th century.
+        				Famous for his "drip" paintings.
+    				</aside>
 				</section>
 
 				<section>
 					<img style="border: none;" src="no8.jpg" alt="Number 8">
 					<br/>
 					<h5>Number 8</h5>
+					<aside class="notes">
+        				Most famous painting. This is what we'll try to re-create, but with code.
+    				</aside>
 				</section>
 
-				<section data-markdown>
-					Code & concept based on [Painting in Clojure](http://tombooth.co.uk/painting-in-clojure/) by Tom Booth
+				<section>
+					Code & concept based on <a href="http://tombooth.co.uk/painting-in-clojure/">Painting in Clojure</a> by Tom Booth
+					<aside class="notes">
+        				Some of the code is intense. This presentation simplifies it so as to focus on the bits that demonstrate some of the features of Clojure and why we should program in it.
+    				</aside>
 				</section>
 
 				<section data-markdown>
@@ -85,30 +100,44 @@
 				</section>
 
 				<section>
-					<section data-markdown>
-						
-						## Why learn it? <br/>
-						> I suppose I should learn Lisp, but it seems so foreign.
-						>
-						> -- <cite>Paul Graham (1983)</cite>
+					<section>
+						<h2>Why learn it?</h2>
+						<blockquote>
+							I suppose I should learn Lisp, but it seems so foreign.
+							<br>
+							-- <cite>Paul Graham (1983)</cite>
+						</blockquote>
+						<aside class="notes">
+        					PG is Founder+ex-Prez of Y-Combinator. He's written books on LISP and is a huge proponent, but had this to say in 1983.
+        					<br>
+							Speaks about Abstraction Spectrum of prog. languages in one of his essays. Where a language falls, reflects its power. But constructs of higher languages don't make sense to lower languages. So his words here kinda make sense.
+							<br>
+							We might not understand why these reasons are important, but the key is to try it out and realise.
+    					</aside>
 					</section>
 				</section>
 				
 				<section>
-					<section data-markdown>
-						### Homoiconicity (AKA Code-As-Data)
-
-						(from the Greek words _homo_ meaning _the same_ and _icon_ meaning _representation_)
+					<section>
+						<h3>Homoiconicity (AKA Code-As-Data)</h3>
+						(from the Greek words <i>homo</i> meaning <i>the same</i> and <i>icon</i> meaning <i>representation</i>)
+						<aside class="notes">
+        					Means your code and data have the same representation. Very powerful concept with a lot of implications.
+    					</aside>
 
 					</section>
-					<section data-markdown>	
-						<script type="text/template">
-						### Homoiconicity (AKA Code-As-Data)
+					<section>	
+						<h3>Homoiconicity (AKA Code-As-Data)</h3>
+						<ul>
+							<li>Syntax becomes easy to learn</li>
+							<li>Enables metaprogramming</li>
+							<li>Makes language extensible</li>
+						</ul>
+						<aside class="notes">
+        					Syntax follows few rules. 
+        					<br>Metaprogramming enables features like macros which allow the creation of domain specific language.
+    					</aside>
 
-						* Enables metaprogramming
-						* Makes language extensible
-						* Syntax becomes easy to learn
-						</script>
 					</section>
 
 					<section>
@@ -172,6 +201,9 @@
 								</tr>
 							</tbody>
 						</table>
+						<aside class="notes">
+        					Of special importance are lists. Because that's what we represent expressions within our code as.
+    					</aside>
 					</section>
 
 					<section>
@@ -194,19 +226,27 @@
 				</section>
 
 				<section>
-					<section data-markdown>
-						### Persistent Data Structures
-						* Immutable
-						* Changing a list returns a new list.
-						* No "copy-on-write". Internally re-use old list.
+					<section>
+						<h3>Persistent Data Structures</h3>
+						<ul>
+							<li>Immutable</li>
+							<li>Changing a list returns a new list.</li>
+							<li>No "copy-on-write". Internally re-use old list.</li>
+						</ul>
+						<aside class="notes">
+        					Data structures cannot be changed. Any change leads to creation of a new one. 
+        					<br>But not by creating a copy with the change, but instead by storing info about the delta and a reference to the old version.
+    					</aside>
 					</section>
 
-					<section data-markdown>
-						### Persistent Data
-						* Thread-safe. No synchronisation issues.
-						* Allows lazy fetching.
-						* No concept of "state" makes code less bug-prone.
-						* Not as expensive, considering current memory & CPU capacities.
+					<section>
+						<h3>Persistent Data</h3>
+						<ul>
+							<li>Thread-safe. No synchronisation issues.</li>
+							<li>Allows lazy fetching.</li>
+							<li>No concept of "state" makes code less bug-prone.</li>
+							<li>Not as expensive, considering current memory & CPU capacities.</li>
+						</ul>
 					</section>
 
 				</section>
@@ -222,10 +262,10 @@
 				<section>
 					<h2>Productivity</h2>
 					<div class="span6">
-						<img style="border: none;"src="java.png" alt="Java">
+						<img style="border: none; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"src="java.png" alt="Java">
 					</div>
 					<div class="span6">
-						<img style="border: none;"src="clojure.png" alt="Clojure">
+						<img style="border: none; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"src="clojure.png" alt="Clojure">
 					</div>
 				</section>
 
@@ -264,7 +304,6 @@
 					### Steps
 					* Define our space + canvas
 					* Simulate flinging paint onto canvas
-					* Simulate splattering of paint
 					* Determine splatter pattern formed
 					* Render pattern on canvas
 				</section>
@@ -350,12 +389,7 @@
      projected-velocity]))
 						</code></pre>
 					</section>
-				</section>
 
-				<section>
-					<section>
-						<h3>Simulate splattering of paint</h3>
-					</section>
 					<section>
 						<img style="border: none;" src="splatter.png" alt="Splatter">
 					</section>
@@ -384,8 +418,13 @@
 						<h3>Determine splatter pattern formed</h3>
 					</section>
 					<section>
-						<img style="border: none;" src="paths.png" alt="Paths">
+						
+						<div class="span4"><img style="border: none; box-shadow: none;" src="bezier2.gif" alt=""></div>
+						<div class="span4"><img style="border: none; box-shadow: none;" src="bezier3.gif" alt=""></div>
+						<div class="span4"><img style="border: none; box-shadow: none;" src="bezier4.gif" alt=""></div>
+						<img style="border: none;" src="paths.png" alt="Paths-II">
 					</section>
+
 					<section>
 						<pre><code data-trim contenteditable>
 (defn random-path [position step-vector bounds]
@@ -406,13 +445,6 @@
                                      (vector-multiply-by-constant step-vector steps))]
     (conj (vec random-positions) end-position)))
 						</code></pre>
-					</section>
-					<section>
-						
-						<div class="span4"><img style="border: none; box-shadow: none;" src="bezier2.gif" alt=""></div>
-						<div class="span4"><img style="border: none; box-shadow: none;" src="bezier3.gif" alt=""></div>
-						<div class="span4"><img style="border: none; box-shadow: none;" src="bezier4.gif" alt=""></div>
-						<img style="border: none;" src="paths2.png" alt="Paths-II">
 					</section>
 
 					<section>
@@ -480,10 +512,11 @@
 				<section>
 					<h3>Links</h3>
 					<ul>
-						<li>Slides: http://akaashanky.github.io/techforum/</li>
-						<li>http://clojure.org/</li>
-						<li>http://tombooth.co.uk/painting-in-clojure/</li>
-						<li>https://github.com/tombooth/painting-in-clojure/</li>
+						<li>Slides: <a href="http://akaashanky.github.io/techforum/">http://akaashanky.github.io/techforum/</a></li>
+						<li>Clojure website: <a href="http://clojure.org/">http://clojure.org/</a></li>
+						<li>Painting in Clojure: <a href="http://tombooth.co.uk/painting-in-clojure/">http://tombooth.co.uk/painting-in-clojure/</a></li>
+						<li>Code: <a href="https://github.com/tombooth/painting-in-clojure/">https://github.com/tombooth/painting-in-clojure/</a></li>
+						<li>Resources to get started: <a href="http://clojure-doc.org/">http://clojure-doc.org/</a></li>
 					</ul>
 				</section>
 
@@ -492,7 +525,7 @@
 					<br>
 					<ul>
 						<li>Go to <a href="http://bit.ly/tf5idc">http://bit.ly/tf5idc</a></li>
-						<li>Sign In using your corp credentials</li>
+						<li>Sign in using your corp credentials</li>
 						<li>Click on the session "Creating Art with Clojure"</li>
 						<li>On the right side click on "Rate this session" and rate the session</li>
 						<li>Thank you!</li>
