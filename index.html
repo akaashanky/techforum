@@ -202,7 +202,7 @@
 							</tbody>
 						</table>
 						<aside class="notes">
-        					Of special importance are lists. Because that's what we represent expressions within our code as.
+        					Of special importance are lists. Because that's how we represent expressions within our code as.
     					</aside>
 					</section>
 
@@ -240,11 +240,10 @@
 					</section>
 
 					<section>
-						<h3>Persistent Data</h3>
+						<h3>Persistent Data Structures</h3>
 						<ul>
 							<li>Thread-safe. No synchronisation issues.</li>
 							<li>Allows lazy fetching.</li>
-							<li>No concept of "state" makes code less bug-prone.</li>
 							<li>Not as expensive, considering current memory & CPU capacities.</li>
 						</ul>
 					</section>
@@ -282,6 +281,9 @@
 					<h2>Show me the money!</h2>
 					<img style="border: none;" src="salary.png" alt="Salary/Demand">
 					<a href="https://msgooroo.com/GoorooTHINK/Article/16225/Programming-languages--salaries-and-demand-October-2014/17081#.VGUNtfSUd8s">Source</a>
+					<aside class="notes">
+        				Point is not how much you earn. But to highlight mainstream recognition. Salaries show conviction in choice of language.
+    				</aside>
 				</section>
 
 				<section data-markdown>
@@ -344,6 +346,9 @@
 					</section>
 					<section>
 						<img style="border: none;" src="proj.png" alt="Splatter">
+						<aside class="notes">
+        					If we know the time taken we can find the position. we find time with the given equation.
+    					</aside>
 					</section>
 					<section>
 						$at^2 + 2v_0t + 2(r_0 - r) = 0$
@@ -358,6 +363,9 @@
         minus-sqrt (/ (- minus-b (Math/sqrt discriminant)) (* 2 a))]
     (max add-sqrt minus-sqrt)))
 						</code></pre>
+						<aside class="notes">
+        					Quad eqn. of the form ax2+bx+c. Determine a, b, c. Determine discriminant, etc.
+    					</aside>
 					</section>
 					<section>
 						$r = r_0 + v_0t + \frac{at^2}{2}$
@@ -495,6 +503,8 @@
 					
 					<section>
 						<pre><code data-trim contenteditable>
+(:require [quil.core :as q :include-macros true])							
+
 (defn fling-and-render [& any]
   (q/with-sketch (q/get-sketch-by-id "pollock")
     (let [{:keys [colour canvas-path splatter]} (fling-paint)]
